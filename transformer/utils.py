@@ -1,6 +1,6 @@
 import copy
 
-import torch.nn as nn
+from torch import nn
 
 
 def clones(module: nn.Module, N: int) -> nn.ModuleList:

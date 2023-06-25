@@ -1,12 +1,12 @@
 import math
 
 import torch
-import torch.nn as nn
+from torch import nn
 
 
 class PositionalEncoding(nn.Module):
-    def __init__(self, d_model: int, dropout: float, max_len: int = 5000):
-        super(PositionalEncoding, self).__init__()
+    def __init__(self, d_model: int, dropout: float, max_len: int = 5000) -> None:
+        super().__init__()
         self.dropout = nn.Dropout(p=dropout)
 
         # Compute the positional encodings once in log space.

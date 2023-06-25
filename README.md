@@ -18,17 +18,19 @@ The transformer consists of the following classes and methods:
 
 - [`Embeddings`](embedding.py) i.e. "Input Embedding" and "Output Embedding" in the
   figure.
-- [`PositionalEncoding`](positional_encoding.py)
-- [`EncoderLayer`](encoder.py)
-- [`Encoder`](encoder.py)
-- [`DecoderLayer`](decoder.py)
-- [`Decoder`](decoder.py)
-- [`LayerNorm`](layer_norm.py)
-- [`SublayerConnection`](sublayer_connection.py)
-- [`PositionwiseFeedForward`](feedforward_net.py) i.e. "Feed Forward" in the figure.
-- [`MultiHeadedAttention`](attention.py) which includes "Masked Multi-Head Attention".
-- [`Generator`](embedding.py)
-- [`subsequent_mask`](decoder_mask.py)
+- [`PositionalEncoding`](transformer/positional_encoding.py)
+- [`EncoderLayer`](transformer/encoder.py)
+- [`Encoder`](transformer/encoder.py)
+- [`DecoderLayer`](transformer/decoder.py)
+- [`Decoder`](transformer/decoder.py)
+- [`LayerNorm`](transformer/layer_norm.py)
+- [`SublayerConnection`](transformer/sublayer_connection.py)
+- [`PositionwiseFeedForward`](transformer/feedforward_net.py) i.e. "Feed Forward" in the
+  figure.
+- [`MultiHeadedAttention`](transformer/attention.py) which includes "Masked Multi-Head
+  Attention".
+- [`Generator`](transformer/embedding.py)
+- [`subsequent_mask`](transformer/decoder_mask.py)
 
 ## Setup
 

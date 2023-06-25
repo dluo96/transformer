@@ -1,4 +1,5 @@
 """Module for running inference with the transformer."""
+import logging
 import torch
 
 from transformer.decoder_mask import subsequent_mask
@@ -50,7 +51,7 @@ def inference_test() -> None:
         y = torch.empty(1, 1).type_as(src.data).fill_(next_word)
         ys = torch.cat([ys, y], dim=1)
 
-    print("Example Untrained Model Prediction:", ys)
+    logging.info("Example Untrained Model Prediction:", ys)
 
 
 def run_tests() -> None:

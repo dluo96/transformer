@@ -1,3 +1,4 @@
+"""Module for embedding look-up and its reverse (getting a word from an embedding)."""
 import math
 
 import torch

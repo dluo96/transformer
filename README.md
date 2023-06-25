@@ -10,7 +10,7 @@ by Harvard NLP. I have further annotated the code including the following:
 Below is a figure showing which components of the original transformer architecture correspond to
 which classes in this subpackage. 
 
-![](../../img/annotated_transformer.png)
+![](img/annotated_transformer.png)
 
 The transformer consists of the following classes and methods:
 - [`Embeddings`](embedding.py) i.e. "Input Embedding" and "Output Embedding" in the figure.

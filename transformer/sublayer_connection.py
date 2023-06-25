@@ -1,13 +1,12 @@
+"""Module for defining the sublayer connection."""
 from typing import Union
 
 import torch
-import torch.nn as nn
+from torch import nn
 
-from learning.transformer import (
-    LayerNorm,
-    MultiHeadedAttention,
-    PositionwiseFeedForward,
-)
+from transformer.attention import MultiHeadedAttention
+from transformer.feedforward_net import PositionwiseFeedForward
+from transformer.layer_norm import LayerNorm
 
 
 class SublayerConnection(nn.Module):
@@ -15,11 +14,11 @@ class SublayerConnection(nn.Module):
     NOTE: for code simplicity the layer norm is first rather than last.
     """
 
-    def __init__(self, size: int, dropout: float):
+    def __init__(self, size: int, dropout: float) -> None:
         """The `size` is typically the dimensionality of the embedding space. The
         `dropout` is the probability of an element being zeroed.
         """
-        super(SublayerConnection, self).__init__()
+        super().__init__()
         self.norm = LayerNorm(size)
         self.dropout = nn.Dropout(dropout)
 

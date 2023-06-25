@@ -47,13 +47,7 @@ follow_imports = "skip"
 
 [[tool.mypy.overrides]]
 module = [
-    "matplotlib.*",
     "omegaconf.*",
-    "pandas.*",
-    "PIL.*",
-    "pytest.*",
-    "requests.*",
-    "torchvision.*",
 ]
 ignore_missing_imports = true
 

@@ -1,13 +1,12 @@
+"""Module for defining the decoder part of the transformer architecture."""
 import torch
-import torch.nn as nn
+from torch import nn
 
-from learning.transformer import (
-    LayerNorm,
-    MultiHeadedAttention,
-    PositionwiseFeedForward,
-    SublayerConnection,
-    clones,
-)
+from transformer.attention import MultiHeadedAttention
+from transformer.feedforward_net import PositionwiseFeedForward
+from transformer.layer_norm import LayerNorm
+from transformer.sublayer_connection import SublayerConnection
+from transformer.utils import clones
 
 
 class DecoderLayer(nn.Module):
@@ -28,8 +27,8 @@ class DecoderLayer(nn.Module):
         src_attn: MultiHeadedAttention,
         feed_forward: PositionwiseFeedForward,
         dropout: float,
-    ):
-        super(DecoderLayer, self).__init__()
+    ) -> None:
+        super().__init__()
         self.size = size
         self.self_attn = self_attn
         self.src_attn = src_attn
@@ -54,8 +53,8 @@ class DecoderLayer(nn.Module):
 class Decoder(nn.Module):
     """The decoder is a stack of N decoder layers, and it can contain masking."""
 
-    def __init__(self, layer: DecoderLayer, N: int):
-        super(Decoder, self).__init__()
+    def __init__(self, layer: DecoderLayer, N: int) -> None:
+        super().__init__()
         self.layers = clones(layer, N)
         self.norm = LayerNorm(layer.size)
 

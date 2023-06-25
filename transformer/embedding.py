@@ -1,15 +1,18 @@
+"""Module for embedding look-up and its reverse (getting a word from an embedding)."""
 import math
 
 import torch
-import torch.nn as nn
+from torch import nn
 from torch.nn.functional import log_softmax
 
 
 class Embeddings(nn.Module):
-    """In our model, we share the same weight matrix between the two embedding layers."""
+    """In our model, we share the same weight matrix between the two embedding
+    layers.
+    """
 
-    def __init__(self, d_model: int, vocab: int):
-        super(Embeddings, self).__init__()
+    def __init__(self, d_model: int, vocab: int) -> None:
+        super().__init__()
         self.lookup_table = nn.Embedding(vocab, d_model)
         self.d_model = d_model
 
@@ -26,8 +29,8 @@ class Generator(nn.Module):
     optimisation, and heavy penalty for highly incorrect predictions).
     """
 
-    def __init__(self, d_model: int, vocab_size: int):
-        super(Generator, self).__init__()
+    def __init__(self, d_model: int, vocab_size: int) -> None:
+        super().__init__()
         self.proj = nn.Linear(d_model, vocab_size)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:

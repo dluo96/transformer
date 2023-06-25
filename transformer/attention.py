@@ -1,10 +1,11 @@
+"""Module for defining multiheaded attention."""
 import math
-from typing import Any, Tuple
+from typing import Any
 
 import torch
-import torch.nn as nn
+from torch import nn
 
-from learning.transformer.utils import clones
+from transformer.utils import clones
 
 
 def attention(
@@ -13,7 +14,7 @@ def attention(
     value: torch.Tensor,
     mask: torch.Tensor = None,
     dropout: torch.float32 = None,
-) -> Tuple[torch.Tensor, Any]:
+) -> tuple[torch.Tensor, Any]:
     """Compute the 'scaled dot-product attention' for one attention head.
 
     Returns:
@@ -32,7 +33,7 @@ def attention(
 
 
 class MultiHeadedAttention(nn.Module):
-    def __init__(self, h: int, d_model: int, dropout: float = 0.1):
+    def __init__(self, h: int, d_model: int, dropout: float = 0.1) -> None:
         """Compute the multihead attention. Due to the reduced embedding dimensionality
         of each head, the total computational cost is similar to that of single-head
         attention with full dimensionality. The time complexity of each attention head
@@ -43,10 +44,12 @@ class MultiHeadedAttention(nn.Module):
             d_model: embedding dimensionality.
             dropout: probability of an element being zeroed.
         """
-        super(MultiHeadedAttention, self).__init__()
+        super().__init__()
 
         # Reduce the dimensionality of each head
-        assert d_model % h == 0
+        if not d_model % h == 0:
+            raise ValueError(f"d_model ({d_model}) must be divisible by h .")
+
         self.d_k = d_model // h  # NB: we assume d_v always equals d_k
         self.h = h
 
@@ -71,10 +74,10 @@ class MultiHeadedAttention(nn.Module):
         num_batches = query.size(0)
 
         # 1) Do all the linear projections in batch from d_model => h x d_k
-        query, key, value = [
+        query, key, value = (
             lin(x).view(num_batches, -1, self.h, self.d_k).transpose(1, 2)
             for lin, x in zip(self.linear_layers, (query, key, value))
-        ]
+        )
 
         # 2) Apply attention on all the projected vectors in batch.
         x, self.attn = attention(query, key, value, mask=mask, dropout=self.dropout)
@@ -91,10 +94,10 @@ if __name__ == "__main__":
     d = 512
     h = 8
     d_k = 512 // h
-    num_batches = 2
-    Q = torch.rand(num_batches, n, 512)
-    K = torch.rand(num_batches, n, 512)
-    V = torch.rand(num_batches, n, 512)
+    n_batches = 2
+    Q = torch.rand(n_batches, n, 512)
+    K = torch.rand(n_batches, n, 512)
+    V = torch.rand(n_batches, n, 512)
 
     mha = MultiHeadedAttention(h, d)
     out = mha(Q, K, V)

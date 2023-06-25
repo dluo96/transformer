@@ -1,6 +1,7 @@
+"""Module containing utility functions for the transformer."""
 import copy
 
-import torch.nn as nn
+from torch import nn
 
 
 def clones(module: nn.Module, N: int) -> nn.ModuleList:

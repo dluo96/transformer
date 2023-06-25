@@ -1,5 +1,5 @@
 # The Annotated Transformer - Annotated
-The code in this (sub)package is based on [The Annotated Transformer](http://nlp.seas.harvard.edu/annotated-transformer/) 
+The code in this package is based on [The Annotated Transformer](http://nlp.seas.harvard.edu/annotated-transformer/) 
 by Harvard NLP. I have further annotated the code including the following:
 - Renaming objects that I found to be unclear or confusing. 
 - Adding type hinting for static type checking.

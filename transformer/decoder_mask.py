@@ -1,3 +1,4 @@
+"""Module for creating the mask used in the decoder."""
 import torch
 
 

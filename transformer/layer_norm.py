@@ -1,3 +1,4 @@
+"""Module for defining layer norm."""
 import torch
 from torch import nn
 

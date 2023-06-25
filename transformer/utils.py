@@ -1,3 +1,4 @@
+"""Module containing utility functions for the transformer."""
 import copy
 
 from torch import nn

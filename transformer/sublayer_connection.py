@@ -1,5 +1,5 @@
 """Module for defining the sublayer connection."""
-from typing import Union
+from __future__ import annotations
 
 import torch
 from torch import nn
@@ -25,7 +25,7 @@ class SublayerConnection(nn.Module):
     def forward(
         self,
         x: torch.Tensor,
-        sublayer: Union[MultiHeadedAttention, PositionwiseFeedForward],
+        sublayer: MultiHeadedAttention | PositionwiseFeedForward,
     ) -> torch.Tensor:
         """Apply residual connection to a sublayer with the same size."""
         return x + self.dropout(sublayer(self.norm(x)))

@@ -1,13 +1,12 @@
+"""Module for defining the encoder part of the transformer architecture."""
 import torch
 from torch import nn
 
-from transformer import (
-    LayerNorm,
-    MultiHeadedAttention,
-    PositionwiseFeedForward,
-    SublayerConnection,
-    clones,
-)
+from transformer.attention import MultiHeadedAttention
+from transformer.feedforward_net import PositionwiseFeedForward
+from transformer.layer_norm import LayerNorm
+from transformer.sublayer_connection import SublayerConnection
+from transformer.utils import clones
 
 
 class EncoderLayer(nn.Module):

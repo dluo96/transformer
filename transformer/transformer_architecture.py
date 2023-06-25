@@ -1,18 +1,14 @@
+"""Module for defining the full transformer architecture."""
 import copy
 
 import torch
 from torch import nn
 
-from transformer import (
-    Decoder,
-    Embeddings,
-    Encoder,
-    Generator,
-    MultiHeadedAttention,
-    PositionwiseFeedForward,
-)
-from transformer.decoder import DecoderLayer
-from transformer.encoder import EncoderLayer
+from transformer.attention import MultiHeadedAttention
+from transformer.decoder import Decoder, DecoderLayer
+from transformer.embedding import Embeddings, Generator
+from transformer.encoder import Encoder, EncoderLayer
+from transformer.feedforward_net import PositionwiseFeedForward
 from transformer.positional_encoding import PositionalEncoding
 
 

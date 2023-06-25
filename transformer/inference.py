@@ -1,7 +1,8 @@
+"""Module for running inference with the transformer."""
 import torch
 
 from transformer.decoder_mask import subsequent_mask
-from transformer.transformer import make_model
+from transformer.transformer_architecture import make_model
 
 
 def inference_test() -> None:

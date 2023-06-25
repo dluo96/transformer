@@ -1,9 +1,12 @@
+"""Module for defining the sublayer connection."""
 from typing import Union
 
 import torch
 from torch import nn
 
-from transformer import LayerNorm, MultiHeadedAttention, PositionwiseFeedForward
+from transformer.attention import MultiHeadedAttention
+from transformer.feedforward_net import PositionwiseFeedForward
+from transformer.layer_norm import LayerNorm
 
 
 class SublayerConnection(nn.Module):

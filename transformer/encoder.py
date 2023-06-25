@@ -1,12 +1,12 @@
 import torch
-import torch.nn as nn
+from torch import nn
 
-from learning.transformer import (
-    clones,
-    MultiHeadedAttention,
+from transformer import (
     LayerNorm,
+    MultiHeadedAttention,
     PositionwiseFeedForward,
-    SublayerConnection
+    SublayerConnection,
+    clones,
 )
 
 
@@ -19,13 +19,13 @@ class EncoderLayer(nn.Module):
     """
 
     def __init__(
-            self,
-            size: int,
-            self_attn: MultiHeadedAttention,
-            feed_forward: PositionwiseFeedForward,
-            dropout: float,
-    ):
-        super(EncoderLayer, self).__init__()
+        self,
+        size: int,
+        self_attn: MultiHeadedAttention,
+        feed_forward: PositionwiseFeedForward,
+        dropout: float,
+    ) -> None:
+        super().__init__()
         self.self_attn = self_attn
         self.feed_forward = feed_forward
         self.sublayer = clones(SublayerConnection(size, dropout), 2)
@@ -42,8 +42,8 @@ class EncoderLayer(nn.Module):
 class Encoder(nn.Module):
     """The encoder is a stack of N encoder layers, followed by a layer norm."""
 
-    def __init__(self, layer: EncoderLayer, N: int):
-        super(Encoder, self).__init__()
+    def __init__(self, layer: EncoderLayer, N: int) -> None:
+        super().__init__()
         self.layers = clones(layer, N)
         self.norm = LayerNorm(layer.size)
 

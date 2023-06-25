@@ -1,7 +1,7 @@
 import torch
 
-from learning.transformer.decoder_mask import subsequent_mask
-from learning.transformer.transformer import make_model
+from transformer.decoder_mask import subsequent_mask
+from transformer.transformer import make_model
 
 
 def inference_test() -> None:
@@ -23,7 +23,7 @@ def inference_test() -> None:
     ys = torch.zeros(1, 1).type_as(src)
 
     # Each iteration will predict a new word
-    for i in range(9):
+    for _i in range(9):
         # Extract the length of the input i.e. the number of predicted words so far
         len_input = ys.size(1)
 

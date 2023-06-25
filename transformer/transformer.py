@@ -1,9 +1,9 @@
 import copy
 
 import torch
-import torch.nn as nn
+from torch import nn
 
-from learning.transformer import (
+from transformer import (
     Decoder,
     Embeddings,
     Encoder,
@@ -11,22 +11,24 @@ from learning.transformer import (
     MultiHeadedAttention,
     PositionwiseFeedForward,
 )
-from learning.transformer.decoder import DecoderLayer
-from learning.transformer.encoder import EncoderLayer
-from learning.transformer.positional_encoding import PositionalEncoding
+from transformer.decoder import DecoderLayer
+from transformer.encoder import EncoderLayer
+from transformer.positional_encoding import PositionalEncoding
 
 
 class EncoderDecoder(nn.Module):
     """A standard encoder-decoder architecture.
 
     A few remarks:
-        - `src_embed` consists of an embedding lookup table followed by positional encoding.
-            Is used to preprocess the input that will be passed to the encoder.
-        - `tgt_embed` consists of an embedding lookup table followed by positional encoding.
-            Is used to preprocess the input that will be passed to the decoder.
+        - `src_embed` consists of an embedding lookup table followed by positional
+            encoding. Is used to preprocess the input that will be passed to the
+            encoder.
+        - `tgt_embed` consists of an embedding lookup table followed by positional
+            encoding. Is used to preprocess the input that will be passed to the
+            decoder.
         - `generator` is used to compute the output probabilities for each word in the
-            vocabulary. These probabilities can be used to extract the next word. Thus, it
-            is used to postprocess the output of the decoder.
+            vocabulary. These probabilities can be used to extract the next word. Thus,
+            it is used to postprocess the output of the decoder.
     """
 
     def __init__(
@@ -36,8 +38,8 @@ class EncoderDecoder(nn.Module):
         src_embed: nn.Sequential,
         tgt_embed: nn.Sequential,
         generator: Generator,
-    ):
-        super(EncoderDecoder, self).__init__()
+    ) -> None:
+        super().__init__()
         self.encoder = encoder
         self.decoder = decoder
         self.src_embed = src_embed
@@ -58,7 +60,8 @@ class EncoderDecoder(nn.Module):
 
     def encode(self, src: torch.LongTensor, src_mask: torch.Tensor) -> torch.Tensor:
         """First, get the input embedding (from the lookup table) and add the positional
-        encoding. Then, pass the resultant embedding and the source mask into the encoder.
+        encoding. Then, pass the resultant embedding and the source mask into the
+        encoder.
 
         Args:
             src: input to the transformer on the left side.
@@ -76,9 +79,9 @@ class EncoderDecoder(nn.Module):
         tgt: torch.Tensor,
         tgt_mask: torch.Tensor,
     ) -> torch.Tensor:
-        """First, get the output embedding (from the lookup table) and add the positional
-        encoding. Then, pass the resultant embedding as well as the memory, source mask,
-        and target mask into the decoder.
+        """First, get the output embedding (from the lookup table) and add the
+        positional encoding. Then, pass the resultant embedding as well as the
+        memory, source mask, and target mask into the decoder.
 
         Returns:
             Output of decoder.
@@ -95,9 +98,9 @@ def make_model(
     h: int = 8,
     dropout: float = 0.1,
 ) -> EncoderDecoder:
-    """Construct a model (representing the transformer) from hyperparameters. Importantly,
-    the `Embedding` module and `PositionalEncoding` modules are combined into a `Sequential`
-    module.
+    """Construct a model (representing the transformer) from hyperparameters.
+    Importantly, the `Embedding` module and `PositionalEncoding` modules are
+    combined into a `Sequential` module.
 
     Args:
         src_vocab: size of the source vocabulary.

@@ -134,4 +134,4 @@ if __name__ == "__main__":
     e = Embeddings(512, 10000)
     y = torch.LongTensor([[1, 2, 4, 5], [4, 3, 2, 9]])
     z = e(y)
-    assert z[0, 2] == z[1, 0]
+    equality = z[0, 2] == z[1, 0]

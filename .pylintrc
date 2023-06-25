@@ -60,6 +60,8 @@ disable=attribute-defined-outside-init,
         too-many-instance-attributes,
         too-many-locals,
         wrong-import-order,
+        # Added below to avoid "Argument name "N" doesn't conform to '^[a-z][a-z0-9_]*$' pattern"
+        invalid-name,
 
 [REPORTS]
 

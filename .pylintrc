@@ -62,6 +62,8 @@ disable=attribute-defined-outside-init,
         wrong-import-order,
         # Added below to avoid "Argument name "N" doesn't conform to '^[a-z][a-z0-9_]*$' pattern"
         invalid-name,
+        # Added below to avoid "Redefining name 'd_k' from outer scope"
+        redefined-outer-name
 
 [REPORTS]
 

@@ -1,3 +1,4 @@
+"""Module for defining multiheaded attention."""
 import math
 from typing import Any
 
@@ -93,10 +94,10 @@ if __name__ == "__main__":
     d = 512
     h = 8
     d_k = 512 // h
-    num_batches = 2
-    Q = torch.rand(num_batches, n, 512)
-    K = torch.rand(num_batches, n, 512)
-    V = torch.rand(num_batches, n, 512)
+    n_batches = 2
+    Q = torch.rand(n_batches, n, 512)
+    K = torch.rand(n_batches, n, 512)
+    V = torch.rand(n_batches, n, 512)
 
     mha = MultiHeadedAttention(h, d)
     out = mha(Q, K, V)

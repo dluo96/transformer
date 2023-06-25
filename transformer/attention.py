@@ -46,7 +46,9 @@ class MultiHeadedAttention(nn.Module):
         super().__init__()
 
         # Reduce the dimensionality of each head
-        assert d_model % h == 0
+        if not d_model % h == 0:
+            raise ValueError(f"d_model ({d_model}) must be divisible by h .")
+
         self.d_k = d_model // h  # NB: we assume d_v always equals d_k
         self.h = h
 

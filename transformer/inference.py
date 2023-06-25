@@ -26,7 +26,7 @@ def inference_test() -> None:
     ys = torch.zeros(1, 1).type_as(src)
 
     # Each iteration will predict a new word
-    for _i in range(9):
+    for _ in range(9):
         # Extract the length of the input i.e. the number of predicted words so far
         len_input = ys.size(1)
 

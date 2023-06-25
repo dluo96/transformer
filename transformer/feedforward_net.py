@@ -1,3 +1,4 @@
+"""Module defining the feedforward neural net used in the transformer."""
 import torch
 from torch import nn
 

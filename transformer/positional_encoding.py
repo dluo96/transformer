@@ -1,3 +1,4 @@
+"""Module for implementation of positional encoding."""
 import math
 
 import torch

@@ -4,8 +4,8 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "INSERT PACKAGE NAME HERE"
-description = "INSERT PACKAGE DESCRIPTION HERE"
+name = "transformer"
+description = "Implementation of transformer"
 readme = "README.md"
 authors = [
   {name="Daniel Luo"},

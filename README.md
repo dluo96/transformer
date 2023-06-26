@@ -10,7 +10,7 @@ Harvard NLP. I have further annotated the code including the following:
 - Refactoring parts of the code to improve clarity.
 
 Below is a figure showing which components of the original transformer architecture
-correspond to which classes in this subpackage.
+correspond to which classes in this package.
 
 ![](img/annotated_transformer.png)
 

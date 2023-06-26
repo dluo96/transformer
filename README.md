@@ -59,3 +59,10 @@ pip install --editable .
 ```
 
 ## References
+
+### Transformers
+- [x] [Blog post on positional encoding (by Amirhossein Kazemnejad)](https://kazemnejad.com/blog/transformer_architecture_positional_encoding/)
+- [x] [YouTube video on input processing (by Hedu AI)](https://www.youtube.com/watch?v=dichIcUZfOw)
+- [x] [YouTube video on self-attention and multi-head attention (by Hedu AI)](https://www.youtube.com/watch?v=mMa2PmYJlCo)
+- [x] [YouTube video on decoder masked attention (by Hedu AI)](https://www.youtube.com/watch?v=gJ9kaJsE78k)
+- [x] [Transformers from scratch (by Brandon Rohrer)](https://e2eml.school/transformers.html)

@@ -59,8 +59,8 @@ pip install --editable .
 ```
 
 ## References
+I found the following resources helpful in explaining the transformer architecture:
 
-### Transformers
 - [x] [Blog post on positional encoding (by Amirhossein Kazemnejad)](https://kazemnejad.com/blog/transformer_architecture_positional_encoding/)
 - [x] [YouTube video on input processing (by Hedu AI)](https://www.youtube.com/watch?v=dichIcUZfOw)
 - [x] [YouTube video on self-attention and multi-head attention (by Hedu AI)](https://www.youtube.com/watch?v=mMa2PmYJlCo)
